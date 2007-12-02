@@ -1,0 +1,18 @@
+--- LogKit-1.2/build.xml~	2005-07-04 12:58:51.000000000 +0100
++++ LogKit-1.2/build.xml	2005-07-04 13:35:40.000000000 +0100
+@@ -467,6 +467,7 @@
+              sourcepath="${build.src}"
+              destdir="${build.javadocs}">
+       <classpath refid="project.class.path" />
++<!--
+       <doclet name="com.sun.tools.doclets.standard.Standard">
+         <param name="-author"/>
+         <param name="-version"/>
+@@ -478,6 +479,7 @@
+         <param name="-link" value="http://java.sun.com/j2ee/sdk_1.3/techdocs/api/"/>
+         <param name="-link" value="http://avalon.apache.org/api/"/>
+       </doclet>
++-->
+     </javadoc>
+ 
+   </target>
