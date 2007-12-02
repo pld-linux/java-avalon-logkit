@@ -1,0 +1,1 @@
+- builds with jdk 1.5 (just -target/-source won't do)
