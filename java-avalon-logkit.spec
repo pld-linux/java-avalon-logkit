@@ -1,8 +1,13 @@
+# NOTE
+# - does not compile with java 1.6 due:
+#   LogKit-1.2/src/java/org/apache/log/output/db/DefaultDataSource.java:69:
+#   org.apache.log.output.db.DefaultDataSource is not abstract and does not
+#   override abstract method isWrapperFor(java.lang.Class) in java.sql.Wrapper
 %include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
 Name:		avalon-logkit
 Version:	1.2
-Release:	0.1
+Release:	1
 Epoch:		0
 License:	Apache Software License
 Group:		Development/Languages/Java
@@ -21,6 +26,7 @@ BuildRequires:	junit
 BuildRequires:	logging-log4j
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	servlet
+BuildRequires:	jdk < 1.6
 %if %(locale -a | grep -q '^en_US$'; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
@@ -61,8 +67,8 @@ export LC_ALL=en_US # source code not US-ASCII
 rm -rf $RPM_BUILD_ROOT
 # jars
 install -d $RPM_BUILD_ROOT%{_javadir}
-install build/lib/logkit.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
-(cd $RPM_BUILD_ROOT%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} ${jar/-%{version}/}; done)
+cp -a build/lib/logkit.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
+ln -s %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
