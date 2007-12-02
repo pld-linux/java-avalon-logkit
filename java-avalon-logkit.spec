@@ -10,6 +10,7 @@ URL:		http://avalon.apache.org/logkit/
 Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
 # Source0-md5:	17ede0a7d297ad610b47c476757c2b96
 Patch0:		%{name}-build.patch
+Patch1:		%{name}-javadoc.patch
 BuildRequires:	ant
 #BuildRequires:	avalon-framework >= 4.1.4
 BuildRequires:	javamail
@@ -46,9 +47,10 @@ Javadoc for %{name}.
 %prep
 %setup -q -n LogKit-%{version}
 %patch0 -p0
+%patch1 -p1
 
 %build
-required_jars="log4j javamail/mailapi jms servlet jdbc-stdext avalon-framework junit"
+required_jars="log4j mailapi jms servlet jdbc-stdext avalon-framework junit"
 PWD=$(pwd)
 export CLASSPATH=$(build-classpath $required_jars):$PWD/build/classes
 
