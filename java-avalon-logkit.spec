@@ -3,6 +3,7 @@
 #   LogKit-1.2/src/java/org/apache/log/output/db/DefaultDataSource.java:69:
 #   org.apache.log.output.db.DefaultDataSource is not abstract and does not
 #   override abstract method isWrapperFor(java.lang.Class) in java.sql.Wrapper
+# - http://java.sun.com/javase/6/docs/api/java/sql/Wrapper.html
 %include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
 Name:		avalon-logkit
