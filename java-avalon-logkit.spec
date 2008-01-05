@@ -6,17 +6,18 @@
 # - http://java.sun.com/javase/6/docs/api/java/sql/Wrapper.html
 %include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
+Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		avalon-logkit
 Version:	1.2
 Release:	1
 Epoch:		0
 License:	Apache Software License
 Group:		Development/Languages/Java
-URL:		http://avalon.apache.org/logkit/
 Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
 # Source0-md5:	17ede0a7d297ad610b47c476757c2b96
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-javadoc.patch
+URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
 #BuildRequires:	avalon-framework >= 4.1.4
 BuildRequires:	javamail
@@ -43,13 +44,23 @@ LogKit is a logging toolkit designed for secure performance orientated
 logging in applications. To get started using LogKit, it is recomended
 that you read the whitepaper and browse the API docs.
 
+%description -l pl.UTF-8
+LogKit to biblioteka do logowania zaprojektowana z myślą o
+bezpiecznym, wydajnym logowaniu w aplikacjach. Zaleca się zacząć
+używanie LogKitu od przeczytania specyfikacji i przejrzenia
+dokumentacji API.
+
 %package javadoc
-Summary:	Javadoc for %{name}
+Summary:	Javadoc for Avalon LogKit
+Summary(pl.UTF-8):	Dokumentacja Javadoc do pakietu Avalon LogKit
 Group:		Documentation
 Requires:	jpackage-utils
 
 %description javadoc
-Javadoc for %{name}.
+Javadoc for Avalon LogKit.
+
+%description javadoc -l pl.UTF-8
+Dokumentacja Javadoc do pakietu Avalon LogKit.
 
 %prep
 %setup -q -n LogKit-%{version}
