@@ -11,7 +11,7 @@ Name:		avalon-logkit
 Version:	1.2
 Release:	1
 Epoch:		0
-License:	Apache Software License
+License:	Apache
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
 # Source0-md5:	17ede0a7d297ad610b47c476757c2b96
