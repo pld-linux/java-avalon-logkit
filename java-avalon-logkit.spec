@@ -1,9 +1,4 @@
-# NOTE
-# - does not compile with java 1.6 due:
-#   LogKit-1.2/src/java/org/apache/log/output/db/DefaultDataSource.java:69:
-#   org.apache.log.output.db.DefaultDataSource is not abstract and does not
-#   override abstract method isWrapperFor(java.lang.Class) in java.sql.Wrapper
-# - http://java.sun.com/javase/6/docs/api/java/sql/Wrapper.html
+
 %include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
@@ -17,6 +12,7 @@ Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
 # Source0-md5:	17ede0a7d297ad610b47c476757c2b96
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-javadoc.patch
+Patch2:		%{name}-java16.patch
 URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
 #BuildRequires:	avalon-framework >= 4.1.4
@@ -28,7 +24,7 @@ BuildRequires:	junit
 BuildRequires:	logging-log4j
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	servlet
-BuildRequires:	jdk < 1.6
+BuildRequires:	jdk
 %if %(locale -a | grep -q '^en_US$'; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
@@ -66,6 +62,7 @@ Dokumentacja Javadoc do pakietu Avalon LogKit.
 %setup -q -n LogKit-%{version}
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 required_jars="log4j mailapi jms servlet jdbc-stdext avalon-framework junit"
