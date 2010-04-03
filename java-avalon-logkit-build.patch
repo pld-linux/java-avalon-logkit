@@ -1,13 +1,16 @@
---- build.xml	Thu Jan 31 17:18:19 2002
-+++ build.xml.new	Sun Feb  3 14:10:47 2002
-@@ -260,10 +260,6 @@
+--- LogKit-1.2/build.xml.orig	2003-02-10 19:12:55.000000000 +0100
++++ LogKit-1.2/build.xml	2010-04-03 19:26:51.000000000 +0200
+@@ -327,12 +327,7 @@
+            destdir="${build.classes}"
+            debug="${debug}"
             optimize="${optimize}"
-            deprecation="${deprecation}"
-            target="1.2">
+-           deprecation="${deprecation}"
+-           target="1.2">
 -      <classpath>
 -        <path refid="project.class.path" />
 -        <path refid="tools.class.path"/>
 -      </classpath>
++	   deprecation="${deprecation}">
        <src path="${test.dir}"/>
        <src path="${compat.dir}"/>
        <exclude name="org/apache/log/output/ServletOutputLogTarget.java"
