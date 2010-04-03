@@ -33,7 +33,6 @@ BuildRequires:	java-mail
 BuildRequires:	java-servletapi
 %{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jdbc-stdext
-BuildRequires:	jdk
 %{?with_jms:BuildRequires:	jms}
 BuildRequires:	jpackage-utils
 BuildRequires:	jpackage-utils >= 0:1.5
