@@ -20,11 +20,11 @@ Patch2:		%{name}-java16.patch
 URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
 BuildRequires:	glibc-localedb-all
+BuildRequires:	java(jdbc-stdext)
 BuildRequires:	java-junit
 BuildRequires:	java-log4j
 BuildRequires:	java-mail
 BuildRequires:	java-servletapi
-BuildRequires:	jdbc-stdext
 BuildRequires:	jdk
 %{?with_jms:BuildRequires:	jms}
 BuildRequires:	jpackage-utils >= 0:1.5
