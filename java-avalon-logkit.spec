@@ -1,12 +1,6 @@
 
 %bcond_with	jms	# build output jms classes
 
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-
 %include	/usr/lib/rpm/macros.java
 
 %define		srcname	avalon-logkit
@@ -26,17 +20,14 @@ Patch2:		%{name}-java16.patch
 URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
 BuildRequires:	glibc-localedb-all
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
 BuildRequires:	java-junit
 BuildRequires:	java-log4j
 BuildRequires:	java-mail
 BuildRequires:	java-servletapi
-%{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jdbc-stdext
+BuildRequires:	jdk
 %{?with_jms:BuildRequires:	jms}
-BuildRequires:	jpackage-utils
 BuildRequires:	jpackage-utils >= 0:1.5
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java-servletapi
