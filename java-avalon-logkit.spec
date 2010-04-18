@@ -30,8 +30,8 @@ BuildRequires:	jdk
 BuildRequires:	jpackage-utils >= 0:1.5
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+Requires:	java(jdbc-stdext)
 Requires:	java-servletapi
-Requires:	jdbc-stdext
 %{?with_jms:Requires:	jms}
 Obsoletes:	avalon-logkit
 BuildArch:	noarch
