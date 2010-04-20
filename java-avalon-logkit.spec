@@ -9,7 +9,7 @@ Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		java-avalon-logkit
 Version:	1.2
-Release:	1
+Release:	2
 License:	Apache v1.1
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
@@ -20,18 +20,18 @@ Patch2:		%{name}-java16.patch
 URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
 BuildRequires:	glibc-localedb-all
+BuildRequires:	java(javamail)
 BuildRequires:	java(jdbc-stdext)
+BuildRequires:	java(servlet)
 BuildRequires:	java-junit
 BuildRequires:	java-log4j
-BuildRequires:	java-mail
-BuildRequires:	java-servletapi
 BuildRequires:	jdk
 %{?with_jms:BuildRequires:	jms}
 BuildRequires:	jpackage-utils >= 0:1.5
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java(jdbc-stdext)
-Requires:	java-servletapi
+Requires:	java(servlet)
 %{?with_jms:Requires:	jms}
 Obsoletes:	avalon-logkit
 BuildArch:	noarch
