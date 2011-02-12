@@ -1,10 +1,9 @@
-
+#
+# Conditional build:
 %bcond_with	jms	# build output jms classes
-
-%include	/usr/lib/rpm/macros.java
-
+#
 %define		srcname	avalon-logkit
-
+%include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		java-avalon-logkit
@@ -12,14 +11,16 @@ Version:	1.2
 Release:	2
 License:	Apache v1.1
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
+Source0:	http://archive.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
 # Source0-md5:	17ede0a7d297ad610b47c476757c2b96
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-javadoc.patch
 Patch2:		%{name}-java16.patch
 URL:		http://avalon.apache.org/logkit/
 BuildRequires:	ant
+%if %(locale -a | grep -q ^en_US$ ; echo $?)
 BuildRequires:	glibc-localedb-all
+%endif
 BuildRequires:	java(javamail)
 BuildRequires:	java(jdbc-stdext)
 BuildRequires:	java(servlet)
