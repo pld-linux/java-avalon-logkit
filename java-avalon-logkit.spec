@@ -7,16 +7,14 @@
 Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		java-avalon-logkit
-Version:	1.2
-Release:	2
-License:	Apache v1.1
+Version:	2.1
+Release:	1
+License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://archive.apache.org/dist/avalon/logkit/LogKit-%{version}-src.tar.gz
-# Source0-md5:	17ede0a7d297ad610b47c476757c2b96
-Patch0:		%{name}-build.patch
-Patch1:		%{name}-javadoc.patch
-Patch2:		%{name}-java16.patch
-URL:		http://avalon.apache.org/logkit/
+Source0:	http://www.apache.org/dist/excalibur/avalon-logkit/source/%{srcname}-%{version}-src.tar.gz
+# Source0-md5:	fee6f5f2db70c320aafbfb4cc32c1c43
+Patch0:		%{name}-java16.patch
+URL:		http://excalibur.apache.org/logger.html
 BuildRequires:	ant
 %if %(locale -a | grep -q ^en_US$ ; echo $?)
 BuildRequires:	glibc-localedb-all
@@ -63,10 +61,8 @@ Javadoc for Avalon LogKit.
 Dokumentacja Javadoc do pakietu Avalon LogKit.
 
 %prep
-%setup -q -n LogKit-%{version}
+%setup -q -n %{srcname}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 required_jars="log4j mail %{?with_jms:jms} servlet-api jdbc-stdext junit"
@@ -75,18 +71,19 @@ CLASSPATH=$(build-classpath $required_jars) #:$PWD/build/classes
 
 export LC_ALL=en_US # source code not US-ASCII
 
-%ant clean jar javadocs
+%ant clean jar javadoc \
+	-Dnoget=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 # jars
 install -d $RPM_BUILD_ROOT%{_javadir}
-cp -a build/lib/logkit.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+cp -a target/avalon-logkit-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
 ln -s %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
-cp -a build/javadocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a dist/docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
 ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
@@ -97,9 +94,9 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
-%doc KEYS LICENSE
-%{_javadir}/%{srcname}.jar
-%{_javadir}/%{srcname}-%{version}.jar
+%doc LICENSE.txt NOTICE.txt
+%{_javadir}/avalon-logkit-%{version}.jar
+%{_javadir}/avalon-logkit.jar
 
 %files javadoc
 %defattr(644,root,root,755)
