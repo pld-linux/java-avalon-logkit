@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_with	jms	# build output jms classes
-#
+%bcond_without	jms	# build output jms classes
+
 %define		srcname	avalon-logkit
 %include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
