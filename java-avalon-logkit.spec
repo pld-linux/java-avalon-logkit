@@ -8,14 +8,15 @@ Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		java-avalon-logkit
 Version:	2.1
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/excalibur/avalon-logkit/source/%{srcname}-%{version}-src.tar.gz
 # Source0-md5:	fee6f5f2db70c320aafbfb4cc32c1c43
-Patch0:		%{name}-java16.patch
+Patch0:		%{name}-java7.patch
 URL:		http://excalibur.apache.org/logger.html
 BuildRequires:	ant
+BuildRequires:	ant-junit
 %if %(locale -a | grep -q ^en_US$ ; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
