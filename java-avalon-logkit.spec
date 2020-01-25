@@ -3,7 +3,6 @@
 %bcond_without	jms	# build output jms classes
 
 %define		srcname	avalon-logkit
-%include	/usr/lib/rpm/macros.java
 Summary:	Java logging toolkit
 Summary(pl.UTF-8):	Biblioteka do logowania w Javie
 Name:		java-avalon-logkit
