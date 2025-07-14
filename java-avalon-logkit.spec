@@ -62,7 +62,7 @@ Dokumentacja Javadoc do pakietu Avalon LogKit.
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 required_jars="log4j mail %{?with_jms:jms} servlet-api jdbc-stdext junit"
